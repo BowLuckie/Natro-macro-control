@@ -20,7 +20,13 @@ module.exports = client;
 console.log("Thank you for useing Natro macro control by Awashcard0#0001");
 const localVersion = "v5";
 
-const config = require("./settings/config.json");
+// Load config from config.local.json first, fallback to config.json
+let config;
+try {
+    config = require("./settings/config.local.json");
+} catch (e) {
+    config = require("./settings/config.json");
+}
 const token = config.token;
 // Global Variables
 client.events = new Collection();

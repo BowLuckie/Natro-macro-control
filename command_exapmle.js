@@ -1,6 +1,11 @@
 const { Command } = require("reconlx");
 const ee = require('../../settings/embed.json')
-const config = require('../../settings/config.json')
+let config;
+try {
+    config = require('../../settings/config.local.json');
+} catch (e) {
+    config = require('../../settings/config.json');
+}
 
 module.exports = new Command({
     // options
