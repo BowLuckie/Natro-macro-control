@@ -1,6 +1,12 @@
 const { MessageEmbed } = require("discord.js");
 const client = require("..");
-const { allowedUsers } = require("../settings/config.json")
+let config;
+try {
+    config = require("../settings/config.local.json");
+} catch (e) {
+    config = require("../settings/config.json");
+}
+const { allowedUsers } = config;
 var ee = require("../settings/embed.json");
 
 client.on('interactionCreate', async interaction => {
